@@ -44,3 +44,5 @@ gradle/
 .trace.db
 .mv
 .trace
+clinic-db.trace.db
+clinic-db.mv.db
