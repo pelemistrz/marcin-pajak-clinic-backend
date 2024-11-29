@@ -32,4 +32,12 @@ public class Patient {
 
     @Embedded
     private Audit audit = new Audit();
+
+    public Patient(String name, String surname, Long pesel, Long phone, LocalDate dateOfBirth) {
+        this.name = name;
+        this.surname = surname;
+        this.pesel = pesel;
+        this.phone = phone;
+        this.dateOfBirth = dateOfBirth;
+    }
 }
