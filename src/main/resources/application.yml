@@ -1,0 +1,22 @@
+spring:
+  application:
+  name: 'clinic'
+  main:
+    banner:
+      mode: 'off'
+  h2.console:
+    enabled: true
+    path: '/console'
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    baseline-on-migrate: true
+management:
+  endpoints:
+    web:
+      base:
+        path: '/status'
+  metrics:
+    enable:
+      http: false
