@@ -2,6 +2,7 @@ package com.app.clinic.service;
 
 import com.app.clinic.exception.DoctorNotFoundException;
 import com.app.clinic.exception.PatientNotFoundException;
+import com.app.clinic.mapper.VisitMapper;
 import com.app.clinic.model.Doctor;
 import com.app.clinic.model.Patient;
 import com.app.clinic.model.Visit;
@@ -13,7 +14,6 @@ import com.app.clinic.repository.VisitRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.nio.channels.FileChannel;
 import java.util.List;
 import java.util.Optional;
 

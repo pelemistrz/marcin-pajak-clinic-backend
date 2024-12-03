@@ -5,6 +5,7 @@ import com.app.clinic.repository.DoctorRepository;
 import com.app.clinic.service.DoctorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,12 +26,13 @@ public class DoctorController {
         return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    @Transactional
     @PostMapping
     public ResponseEntity<Void> addDoctor(@RequestBody DoctorDto doctorDto) {
         service.save(doctorDto);
         return ResponseEntity.ok().build();
     }
-
+    @Transactional
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateDoctor(@PathVariable Long id,@RequestBody DoctorDto doctorDto) {
         if(repository.findById(id).isEmpty()) {

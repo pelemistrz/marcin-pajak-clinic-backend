@@ -9,6 +9,7 @@ import com.app.clinic.repository.VisitRepository;
 import com.app.clinic.service.VisitService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/visits")
 public class VisitController {
-    private final VisitRepository repository;
     private final VisitService service;
 
     @GetMapping
@@ -30,6 +30,7 @@ public class VisitController {
         return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    @Transactional
     @PostMapping
     public ResponseEntity<Void> addVisit(@RequestBody VisitWriteDto visitWriteDto) throws PatientNotFoundException, DoctorNotFoundException {
         service.save(visitWriteDto);

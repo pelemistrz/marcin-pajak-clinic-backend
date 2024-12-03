@@ -7,6 +7,7 @@ import com.app.clinic.repository.PatientRepository;
 import com.app.clinic.service.PatientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,6 +29,7 @@ public class PatientController {
         return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    @Transactional
     @PostMapping
     public ResponseEntity<Void> addPatient(@RequestBody PatientDto patientDto) {
         service.save(patientDto);
