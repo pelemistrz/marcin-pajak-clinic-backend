@@ -9,6 +9,7 @@ import java.time.LocalDate;
 @Getter
 @AllArgsConstructor
 public class PatientDto {
+
     private String name;
     private String surname;
     private Long pesel;

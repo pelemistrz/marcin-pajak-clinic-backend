@@ -1,13 +1,11 @@
 package com.app.clinic.service;
 
 import com.app.clinic.mapper.DoctorMapper;
-import com.app.clinic.model.Doctor;
 import com.app.clinic.model.dto.DoctorDto;
 import com.app.clinic.repository.DoctorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.nio.channels.FileChannel;
 import java.util.List;
 import java.util.Optional;
 
