@@ -1,6 +1,8 @@
 package com.app.clinic.service;
 
+import com.app.clinic.config.AdminConfig;
 import com.app.clinic.mapper.PatientMapper;
+import com.app.clinic.model.Mail;
 import com.app.clinic.model.dto.DoctorDto;
 import com.app.clinic.model.dto.PatientDto;
 import com.app.clinic.repository.PatientRepository;
@@ -15,6 +17,8 @@ import java.util.Optional;
 public class PatientService {
     private final PatientRepository repository;
     private final PatientMapper mapper;
+    private final SimpleEmailService emailService;
+    private final AdminConfig adminConfig;
 
 
 
@@ -29,6 +33,11 @@ public class PatientService {
 
     public void save(PatientDto patientDto) {
         repository.save(mapper.mapToPatient(patientDto));
+        emailService.send(new Mail(
+                adminConfig.getAdminMail(),
+                "Nowy Pacjent",
+                "został dodany nowy Pacjent "+patientDto.getName()+" do bazy danych, pamietaj o zaoferowaniu nowych uslug"
+        ));
     }
 
     public void deletePatientById(Long id) {

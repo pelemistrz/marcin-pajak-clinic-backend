@@ -40,5 +40,7 @@ weather:
       prod: 'http://api.openweathermap.org/data/2.5/weather?q='
   app:
     token: '4af1c105dcf10a54eab54afc6edd20eb'
-
+#admin email
+admin:
+  mail: 'pelemistrz@gmail.com'
 
