@@ -1,6 +1,6 @@
 spring:
   application:
-  name: 'clinic'
+    name: 'clinic'
   main:
     banner:
       mode: 'off'
@@ -14,6 +14,17 @@ spring:
       ddl-auto: validate
   flyway:
     baseline-on-migrate: true
+  mail:
+    host: 'smtp.mailtrap.io'
+    port: 2525
+    username: '${MAIL_USERNAME}'
+    password: '${MAIL_PASSWORD}'
+    properties:
+      smtp:
+        auth: 'true'
+        starttls:
+          enable: 'true'
+#Actuator
 management:
   endpoints:
     web:
@@ -22,3 +33,12 @@ management:
   metrics:
     enable:
       http: false
+#Api for weather
+weather:
+  api:
+    endpoint:
+      prod: 'http://api.openweathermap.org/data/2.5/weather?q='
+  app:
+    token: '4af1c105dcf10a54eab54afc6edd20eb'
+
+

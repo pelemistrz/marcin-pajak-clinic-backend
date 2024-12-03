@@ -29,4 +29,10 @@ public class StaffEvaluation {
 
     @Embedded
     private Audit audit = new Audit();
+
+    public StaffEvaluation(Patient patient, Doctor doctor, String evaluation) {
+        this.patient = patient;
+        this.doctor = doctor;
+        this.evaluation = evaluation;
+    }
 }
