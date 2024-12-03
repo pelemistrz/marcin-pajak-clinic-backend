@@ -35,4 +35,10 @@ public class VisitController {
         service.save(visitWriteDto);
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteVisit(@PathVariable Long id){
+        service.deleteVisitById(id);
+        return ResponseEntity.ok().build();
+    }
 }

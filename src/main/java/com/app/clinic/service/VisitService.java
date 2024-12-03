@@ -39,4 +39,8 @@ public class VisitService {
         Visit visit = new Visit(patient, doctor, visitWriteDto.getDateVisit(), visitWriteDto.getDescription());
         repository.save(visit);
     }
+
+    public void deleteVisitById(Long id) {
+        repository.deleteById(id);
+    }
 }
