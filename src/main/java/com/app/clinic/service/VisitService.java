@@ -5,7 +5,9 @@ import com.app.clinic.repository.VisitRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.nio.channels.FileChannel;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,5 +17,9 @@ public class VisitService {
 
     public List<VisitDto> findAll() {
        return mapper.mapToVisitDtoList(repository.findAll());
+    }
+
+    public Optional<VisitDto> findById(Long id) {
+        return repository.findById(id).map(mapper::mapToVisitDto);
     }
 }
