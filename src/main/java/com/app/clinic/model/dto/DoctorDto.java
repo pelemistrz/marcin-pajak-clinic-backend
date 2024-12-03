@@ -7,6 +7,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class DoctorDto {
+
     private String name;
     private String surname;
     private String specialisation;

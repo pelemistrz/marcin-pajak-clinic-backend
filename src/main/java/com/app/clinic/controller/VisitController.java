@@ -1,15 +1,15 @@
 package com.app.clinic.controller;
 
 
+import com.app.clinic.exception.DoctorNotFoundException;
+import com.app.clinic.exception.PatientNotFoundException;
 import com.app.clinic.model.dto.VisitDto;
+import com.app.clinic.model.dto.projection.VisitWriteDto;
 import com.app.clinic.repository.VisitRepository;
 import com.app.clinic.service.VisitService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +28,11 @@ public class VisitController {
     @GetMapping("/{id}")
     public ResponseEntity<VisitDto> findById(@PathVariable Long id){
         return service.findById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    public ResponseEntity<Void> addVisit(@RequestBody VisitWriteDto visitWriteDto) throws PatientNotFoundException, DoctorNotFoundException {
+        service.save(visitWriteDto);
+        return ResponseEntity.ok().build();
     }
 }

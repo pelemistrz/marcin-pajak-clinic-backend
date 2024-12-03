@@ -31,4 +31,11 @@ public class Visit {
 
     @Embedded
     private Audit audit = new Audit();
+
+    public Visit(Patient patient, Doctor doctor, Date dateVisit, String description) {
+        this.patient = patient;
+        this.doctor = doctor;
+        this.dateVisit = dateVisit;
+        this.description = description;
+    }
 }
